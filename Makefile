@@ -6,13 +6,13 @@ RELREP=.
 NOMLIB=socklib
 
 # définition de répertoire
-REPSRCLIB=$(RELREP)/src/lib/
-REPLIB=$(RELREP)/lib/
-REPSRCBIN=$(RELREP)/src/example/
-REPBIN=$(RELREP)/bin/
-REPSRCTEST=$(RELREP)/src/test/
-REPTEST=$(RELREP)/bin/
-REPINCLUDE=$(RELREP)/include/
+REPSRCLIB=$(RELREP)/src/lib
+REPLIB=$(RELREP)/src/lib
+REPSRCBIN=$(RELREP)/src/example
+REPBIN=$(RELREP)/bin
+REPSRCTEST=$(RELREP)/src/test
+REPTEST=$(RELREP)/bin
+REPINCLUDE=$(RELREP)/include
 
 #definition des options
 CC=gcc
@@ -90,10 +90,10 @@ $(REPBIN)/%.exx:  $(REPSRCBIN)/%.cpp $(FICHIERSLIB)
 
 
 %.a: $(POLIB)
-	ar cr $@ $(POLIB)
+	ar cr ./src/$@ $(POLIB)
 
 %.so: $(POLIB)
-	$(CPP) -shared -fPIC -o $@ $(POLIB)
+	$(CPP) -shared -fPIC -o ./src/$@ $(POLIB)
 
 
 
