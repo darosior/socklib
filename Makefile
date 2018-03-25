@@ -6,13 +6,13 @@ RELREP=.
 NOMLIB=socklib
 
 # définition de répertoire
-REPSRCLIB=$(RELREP)/src/lib
-REPLIB=$(RELREP)/src/lib
-REPSRCBIN=$(RELREP)/src/example
-REPBIN=$(RELREP)/bin
-REPSRCTEST=$(RELREP)/src/test
-REPTEST=$(RELREP)/bin
-REPINCLUDE=$(RELREP)/include
+REPSRCLIB=$(RELREP)/src/lib/
+REPLIB=$(RELREP)/src/lib/
+REPSRCBIN=$(RELREP)/src/example/
+REPBIN=$(RELREP)/bin/
+REPSRCTEST=$(RELREP)/src/test/
+REPTEST=$(RELREP)/bin/
+REPINCLUDE=$(RELREP)/include/
 
 #definition des options
 CC=gcc
@@ -20,7 +20,7 @@ CPP=g++
 CFLAGS=-g -Wall
 CPPFLAGS=-g -Wall -std=c++11 -I. -I$(REPINCLUDE)
 LDFLAGS=
-LDDFLAGS=-L$(REPLIB) -l$(NOMLIB) -Wl,-rpath,$(REPLIB)
+LDDFLAGS=-L$(REPLIB) -l $(NOMLIB) -Wl,-rpath,$(REPLIB)
 # 
 #-Wl,-rpath,$(REPLIB) est une option pour que l'executable retrouve la librairie dynamique.
 #-Wl transmet la suite comme option à l'éditeur de lien.
@@ -90,10 +90,10 @@ $(REPBIN)/%.exx:  $(REPSRCBIN)/%.cpp $(FICHIERSLIB)
 
 
 %.a: $(POLIB)
-	ar cr ./src/$@ $(POLIB)
+	ar cr $@ $(POLIB)
 
 %.so: $(POLIB)
-	$(CPP) -shared -fPIC -o ./src/$@ $(POLIB)
+	$(CPP) -shared -fPIC -o $@ $(POLIB)
 
 
 
